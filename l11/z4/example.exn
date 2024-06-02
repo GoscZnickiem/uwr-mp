@@ -1,0 +1,5 @@
+try
+	try raise A 7 with
+	B, x -> 13 + x
+with
+A, x -> 42 + x

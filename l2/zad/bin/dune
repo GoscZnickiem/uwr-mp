@@ -1,0 +1,4 @@
+(executable
+ (public_name zad)
+ (name main)
+ (libraries zad))

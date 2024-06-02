@@ -1,0 +1,28 @@
+# dune build
+# OCAMLPARAM: unset
+# Shared cache: disabled
+# Shared cache location: /home/dante/.cache/dune/db
+# Workspace root: /home/dante/uwr/mp/l11/z
+# Auto-detected concurrency: 12
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; instrument_with = []
+#  }
+$ /home/dante/.opam/uwr/bin/ocamlc.opt -config > /tmp/dune_32fbc8_output
+# Promoting "_build/default/z.opam" to "z.opam"
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlc.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -bin-annot -I lib/.z.objs/byte -no-alias-deps -opaque -o lib/.z.objs/byte/z.cmo -c -impl lib/z.ml-gen)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlc.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I test/.test_z.eobjs/byte -no-alias-deps -opaque -o test/.test_z.eobjs/byte/dune__exe__Test_z.cmi -c -intf test/test_z.mli)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlc.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o lib/z.cma lib/.z.objs/byte/z.cmo)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlc.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I bin/.main.eobjs/byte -I lib/.z.objs/byte -no-alias-deps -opaque -o bin/.main.eobjs/byte/dune__exe__Main.cmi -c -intf bin/main.mli)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlopt.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I test/.test_z.eobjs/byte -I test/.test_z.eobjs/native -intf-suffix .ml -no-alias-deps -opaque -o test/.test_z.eobjs/native/dune__exe__Test_z.cmx -c -impl test/test_z.ml)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlopt.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -I lib/.z.objs/byte -I lib/.z.objs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o lib/.z.objs/native/z.cmx -c -impl lib/z.ml-gen)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlopt.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.z.objs/byte -I lib/.z.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlopt.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o lib/z.cmxa lib/.z.objs/native/z.cmx)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlopt.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o test/test_z.exe test/.test_z.eobjs/native/dune__exe__Test_z.cmx)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlopt.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -shared -linkall -I lib -o lib/z.cmxs lib/z.cmxa)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlopt.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/z.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)

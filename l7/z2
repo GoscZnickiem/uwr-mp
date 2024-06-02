@@ -1,0 +1,15 @@
+type ident = string
+
+
+
+for i := n to m do ... end
+
+type for_loop =
+	| ForLoop of ident * expr * expr * expr
+
+
+
+integral from k to n of f over x
+
+type integral = 
+	| Integral of expr * expr * expr * ident

@@ -1,0 +1,11 @@
+function foo ()
+	function bar ()
+	return bar () + foo () + baz ()
+return bar ()
+
+function baz ()
+	function bar ()
+	return foo ()
+return bar ()
+
+skip

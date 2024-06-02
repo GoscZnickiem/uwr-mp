@@ -1,0 +1,233 @@
+=== zad 1 ===
+
+let rec map f = function
+	| [] -> []
+	| x :: xs' -> f x :: map f xs'
+
+Teza indukcyjna:
+Dla każdego xs : List 'a zachodzi
+map f (map g xs) = map (fun x -> f (g x)) xs
+
+Dla []:
+map f (map g []) = map f [] = [] = map (fun x -> f(g x)) []
+
+Niech zachodzi dla pewnego xs. Udowodnimy dla x :: xs:
+map f (map g (x :: xs)) = 
+map f (g x :: map g xs) =
+f (g x) :: map f (map g xs) = 
+f (g x) :: map (fun x-> f(g x)) xs =
+map (fun x-> f(g s)) (x :: xs)
+
+
+
+=== zad 2 ===
+
+let rec append xs ys = 
+	match xs with
+	| [] -> ys
+	| x :: xs' -> x :: append xs' ys
+
+Teza indukcyjna:
+Dla każdego xs : List 'a zachodzi
+Dla każdego ys : List 'a zachodzi
+Istnieje zs takie że
+append xs ys = zs
+
+Dla xs = []:
+append [] ys =
+ys
+
+Niech zachodzi dla pewnego xs. Udowodnimy dla x :: xs:
+append (x :: xs) ys =
+x :: (append xs ys) = 
+x :: zs
+no więc istnieje lol
+
+
+
+=== zad 3 ===
+
+type 'v nnf =
+	| NNFLit of bool * 'v
+	| NNFConj of 'v nnf * 'v nnf
+	| NNFDisj of 'v nnf * 'v nnf
+
+Zasada indukcji dla formuł typu 'v nnf:
+dla każdej własności P,
+jeśli dla każdego p : NNFLit zachodzi P(p)
+oraz dla każdego a : 'v nnf, b : 'v nnf, P(a) i P(b) implikuje 
+										 P(NNFConj(a, b)) i P(NNFDisj(a, b))
+to P zachodzi dla dowolnej formuły x.
+
+
+
+=== zad 4 ===
+
+let rec neg_nnf x =
+	match x with:
+	| NNFLit (b, v) -> NNFLit (not b, v)
+	| NNFConj (a, b) -> NNFDisj (neg_nnf a, neg_nnf b)
+	| NNFDisj (a, b) -> NNFConj (neg_nnf a, neg_nnf b)
+
+Teza:
+Dla każdego a i b, P(a) i P(b) implikuje 
+				   P(NNFConj(a, b)) i P(NNFDisj(a, b))
+
+Dla dowolnego x : NNFLit (b, v) zachodzi:
+neg_nnf (neg_nnf x) =
+neg_nnf (NNFLit (not b, v)) =
+NNFLit (not not b, v) =
+NNFLit (b, v)
+
+niech a i b spełniają tezę.
+neg_nnf (neg_nnf NNFConj(a, b)) =
+neg_nnf (NNFDisj (neg_nnf a, neg_nnf b)) =
+NNFConj (neg_nnf neg_nnf a, neg_nnf neg_nnf b) =
+NNFConj (a, b)
+oraz
+neg_nnf (neg_nnf NNFDisj(a, b)) =
+neg_nnf (NNFConj (neg_nnf a, neg_nnf b)) =
+NNFDisj (neg_nnf neg_nnf a, neg_nnf neg_nnf b) =
+NNFDisj (a, b)
+
+
+
+=== zad 5 ===
+
+let rec eval_nnf eval f =
+	match f with:
+	| NNFLit (b, v) -> if b then eval v else not (eval v)
+	| NNFConj (a, b) -> eval_nnf a && eval_nnf b
+	| NNFDisj (a, b) -> eval_nnf a || eval_nnf b 
+
+Teza:
+eval_nnf σ (neg_nnf φ) = not (eval_nnf σ φ)
+
+dla φ = NNFLit (b, v):
+eval_nnf σ (neg_nnf NNFLit(b, v)) = 
+eval_nnf σ (NNFLit (not b, v)) =
+if not b then σ v else not (σ v) =
+not if b then σ v else not (σ v) =
+not eval_nnf σ (NNFLit (b, v)) =
+
+Załóżmy że teza działa dla pewnych a i b.
+eval_nnf σ (neg_nnf NNFConj (a, b)) = 
+eval_nnf σ (NNFDisj(neg_nnf a, neg_nnf b)) =
+eval_nnf σ neg_nnf a || eval_nnf σ neg_nnf b =
+not eval_nnf σ a || not eval_nnf σ b =
+not (eval_nnf σ a && eval_nnf σ b) =
+not (eval_nnf σ (NNFConj (a, b)))
+oraz
+eval_nnf σ (neg_nnf NNFDisj (a, b)) = 
+eval_nnf σ (NNFConj(neg_nnf a, neg_nnf b)) =
+eval_nnf σ neg_nnf a && eval_nnf σ neg_nnf b =
+not eval_nnf σ a && not eval_nnf σ b =
+not (eval_nnf σ a || eval_nnf σ b) =
+not (eval_nnf σ (NNFDisj (a, b)))
+
+
+
+=== zad 6 ===
+
+type 'v formula =
+	| Var of 'v
+	| Neg of 'v formula
+	| Conj of 'v formula * 'v formula
+	| Disj of 'v formula * 'v formula
+
+let rec to_nnf x =
+	match x with:
+	| Var v -> NNFLit(true, v)
+	| Neg f -> neg_nnf to_nnf f
+	| Conj (a, b) -> NNFConj (to_nnf a, to_nnf b)
+	| Disj (a, b) -> NNFDisj (to_nnf a, to_nnf b)
+
+
+Zasada indukcji dla formuł typu 'v formula:
+dla każdej własności P,
+jeśli dla każdego v : Var zachodzi P(v)
+oraz dla każdych a : 'v formula, b : 'v formula,
+P(a) i P(b) implikuje P(Neg a), P(Conj (a, b)) oraz P(Disj (a, b))
+to P zachodzi dla dowolnej formuły x.
+
+
+
+=== zad 7 ===
+
+let rec eval_formula e f =
+	match f with:
+	| Val v -> e v
+	| Neg fn -> not eval_formula fn
+	| Conj (a, b) -> eval_formula e a && eval_formula e b 
+	| Disj (a, b) -> eval_formula e a || eval_formula e b 
+
+let eval_formula e f = eval_nnf e (to_nnf f)
+
+Teza:
+eval_nnf σ (to_nnf φ) = eval_formula σ φ
+
+dla dowolnego v : Var:
+eval_formula e v =
+e v =
+eval_nnf (to_nnf v)
+
+Załóżmy że działa dla pewnych a i b.
+eval_nnf e (to_nnf Neg a) =
+eval_nnf e (neg_nnf to_nnf a) =
+not eval_nnf e (to_nnf a) =
+not eval_formula e a =
+eval_formula e Neg a 
+
+eval_nnf e (to_nnf Conj (a, b)) =
+eval_nnf e (NNFConj (to_nnf a, to_nnf b)) =
+eval_nnf e to_nnf a && eval_nnf e to_nnf b =
+eval_formula e a && eval_formula e b =
+eval_formula e Conj (a, b)
+
+eval_nnf e (to_nnf Disj (a, b)) =
+eval_nnf e (NNFDisj (to_nnf a, to_nnf b)) =
+eval_nnf e to_nnf a || eval_nnf e to_nnf b =
+eval_formula e a || eval_formula e b =
+eval_formula e Disj (a, b)
+
+
+
+=== zad 8 ===
+
+let rec is_sorted xs =
+	match xs with:
+	| [] -> true
+	| _ :: [] -> true
+	| x :: y :: rest -> if x > y then false else is_sorted y :: rest
+
+let rec insert x xs =
+	match xs with:
+	| [] -> x :: []
+	| e :: rest -> if x > e then e :: insert x rest else x :: xs
+
+teza:
+jeśli is_sorted xs = true to is_sorted (insert x xs) = true
+
+dla []:
+is_sorted [] = true =>
+is_sorted (insert x []) =
+is_sorted (x :: []) = true
+
+załóżmy że teza jest spełniona dla pewnego xs:
+niech y będzie takie że is_sorted y :: xs = true
+=> y <= List.hd xs => y <= all x from xs
+
+is_sorted (insert x y :: xs) =
+is_sorted (if x > y then y :: insert x xs else x :: y :: xs) =
+// if x > y:
+	is_sorted (y :: insert x xs) =
+	if y > List.hd insert x xs then false else is_sorted insert x xs =
+	(skoro y <= all x from xs i y < x to:)
+	is_sorted insert x xs = true
+// else:
+	is_sorted (x :: y :: xs) = 
+	if x > y then false else is_sorted y :: xs = 
+	(skoro x <= y to:)
+	is_sorted y :: xs = true
+
+

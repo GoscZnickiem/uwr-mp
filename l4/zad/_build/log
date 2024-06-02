@@ -1,0 +1,28 @@
+# dune exec zad
+# OCAMLPARAM: unset
+# Shared cache: disabled
+# Shared cache location: /home/dante/.cache/dune/db
+# Workspace root: /home/dante/uwr/mp/l4/zad
+# Auto-detected concurrency: 12
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; installed_env =
+#      map
+#        { "INSIDE_DUNE" : "/home/dante/uwr/mp/l4/zad/_build/default"
+#        ; "OCAML_COLOR" : "always"
+#        ; "OPAMCOLOR" : "always"
+#        }
+#  ; instrument_with = []
+#  }
+$ /home/dante/.opam/uwr/bin/ocamlc.opt -config > /tmp/dune_417dba_output
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlopt.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.zad.objs/byte -I lib/.zad.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+> File "bin/main.ml", line 377, characters 24-29:
+> 377 |         | HeapPrioQueue.empty -> acc
+>                               ^^^^^
+> Error: Syntax error
+[2]

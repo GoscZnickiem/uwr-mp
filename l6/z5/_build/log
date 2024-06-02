@@ -1,0 +1,18 @@
+# dune utop src
+# OCAMLPARAM: unset
+# Shared cache: disabled
+# Shared cache location: /home/dante/.cache/dune/db
+# Workspace root: /home/dante/uwr/mp/l6/z5
+# Auto-detected concurrency: 12
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; instrument_with = []
+#  }
+$ /home/dante/.opam/uwr/bin/ocamlc.opt -config > /tmp/dune_66e5b1_output
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -24 -g -bin-annot -I src/.utop/.utop.eobjs/byte -I /home/dante/.opam/uwr/lib/bytes -I /home/dante/.opam/uwr/lib/findlib -I /home/dante/.opam/uwr/lib/lambda-term -I /home/dante/.opam/uwr/lib/logs -I /home/dante/.opam/uwr/lib/lwt -I /home/dante/.opam/uwr/lib/lwt/unix -I /home/dante/.opam/uwr/lib/lwt_react -I /home/dante/.opam/uwr/lib/mew -I /home/dante/.opam/uwr/lib/mew_vi -I /home/dante/.opam/uwr/lib/ocaml/compiler-libs -I /home/dante/.opam/uwr/lib/ocaml/threads -I /home/dante/.opam/uwr/lib/ocplib-endian -I /home/dante/.opam/uwr/lib/ocplib-endian/bigstring -I /home/dante/.opam/uwr/lib/react -I /home/dante/.opam/uwr/lib/result -I /home/dante/.opam/uwr/lib/trie -I /home/dante/.opam/uwr/lib/uchar -I /home/dante/.opam/uwr/lib/utop -I /home/dante/.opam/uwr/lib/uucp -I /home/dante/.opam/uwr/lib/uuseg -I /home/dante/.opam/uwr/lib/uutf -I /home/dante/.opam/uwr/lib/xdg -I /home/dante/.opam/uwr/lib/zed -I src/.calc.objs/byte -no-alias-deps -o src/.utop/.utop.eobjs/byte/dune__exe__Utop.cmo -c -impl src/.utop/utop.ml-gen)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -24 -g -o src/.utop/utop.bc /home/dante/.opam/uwr/lib/ocaml/compiler-libs/ocamlcommon.cma /home/dante/.opam/uwr/lib/ocaml/compiler-libs/ocamlbytecomp.cma /home/dante/.opam/uwr/lib/ocaml/compiler-libs/ocamltoplevel.cma /home/dante/.opam/uwr/lib/findlib/findlib.cma /home/dante/.opam/uwr/lib/findlib/findlib_top.cma /home/dante/.opam/uwr/lib/logs/logs.cma /home/dante/.opam/uwr/lib/lwt/lwt.cma /home/dante/.opam/uwr/lib/logs/logs_lwt.cma /home/dante/.opam/uwr/lib/ocaml/unix.cma /home/dante/.opam/uwr/lib/ocaml/bigarray.cma /home/dante/.opam/uwr/lib/ocplib-endian/ocplib_endian.cma /home/dante/.opam/uwr/lib/ocplib-endian/bigstring/ocplib_endian_bigstring.cma /home/dante/.opam/uwr/lib/ocaml/threads/threads.cma /home/dante/.opam/uwr/lib/lwt/unix/lwt_unix.cma -I /home/dante/.opam/uwr/lib/lwt/../stublibs /home/dante/.opam/uwr/lib/react/react.cma /home/dante/.opam/uwr/lib/lwt_react/lwt_react.cma /home/dante/.opam/uwr/lib/result/result.cma /home/dante/.opam/uwr/lib/uutf/uutf.cma /home/dante/.opam/uwr/lib/uucp/uucp.cma /home/dante/.opam/uwr/lib/uuseg/uuseg.cma /home/dante/.opam/uwr/lib/zed/zed.cma /home/dante/.opam/uwr/lib/trie/trie.cma /home/dante/.opam/uwr/lib/mew/mew.cma /home/dante/.opam/uwr/lib/mew_vi/mew_vi.cma /home/dante/.opam/uwr/lib/lambda-term/lambda_term.cma -I /home/dante/.opam/uwr/lib/lambda-term/../stublibs /home/dante/.opam/uwr/lib/xdg/xdg.cma -I /home/dante/.opam/uwr/lib/xdg/../stublibs /home/dante/.opam/uwr/lib/utop/uTop.cma src/calc.cma src/.utop/.utop.eobjs/byte/dune__exe__Utop.cmo -linkall -warn-error -31)

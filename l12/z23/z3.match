@@ -1,0 +1,24 @@
+let put = fix (fun put -> fun bst -> fun x ->
+	match bst with
+	| Nil() -> (x, Nil(), Nil())
+	| (v, l, r) -> if v < x then (v, l, put r x) else (v, put l x, r)
+	end) 
+in
+
+let flatten = fix (fun flatten -> fun bst -> fun acc ->
+	match bst with
+	| Nil() -> acc
+	| (v, l, r) -> flatten l (Cons(v, flatten r acc))
+	end) 
+in
+
+let sort = fun xs ->
+	let to_bst = fix (fun to_bst -> fun xs ->
+		match xs with
+		| Nil() -> Nil()
+		| Cons(x, xs) -> put (to_bst xs) x
+		end) 
+	in flatten (to_bst xs) (Nil())
+in
+
+sort (Cons(4, Cons(16, Cons(15, Cons(8, Cons(42, Cons(23, Nil())))))))

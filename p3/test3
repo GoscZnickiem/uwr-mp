@@ -1,0 +1,16 @@
+var n
+var p
+begin
+	read n
+	p := 2
+	while p <= n do 
+	begin
+		if (n / p) * p = n then
+		begin
+			n := n / p 
+			write p
+		end
+		else 
+			p := p + 1
+	end
+end

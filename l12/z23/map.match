@@ -1,0 +1,8 @@
+let map = fix (fun map -> fun f -> fun xs ->
+	match xs with
+	| Nil() -> Nil()
+	| Cons(x, xs) -> Cons(f x, map f xs)
+	end) 
+in
+
+map (fun x -> x * x) (Cons(1, Cons(2, Cons(3, Nil()))))

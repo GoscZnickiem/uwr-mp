@@ -1,0 +1,13 @@
+var n
+begin
+	var x
+	x := 13
+	n := 2
+	x := n * x
+	begin
+		var x
+		x := 13
+		write x
+	end
+	write x
+end

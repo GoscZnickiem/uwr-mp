@@ -1,0 +1,22 @@
+var u
+var res
+var a
+
+function f (x)
+begin
+	write res
+	if x > 0
+	then 
+	begin 
+		res := res + x / 3
+		return f(x - 1)
+	end
+	else return 0
+end
+
+begin
+	read u
+	res := 0
+	a := (f (u))
+	write res
+end

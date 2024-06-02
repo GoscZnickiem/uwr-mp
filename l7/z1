@@ -1,0 +1,23 @@
+let x = z in let y = 3 in y
+    B   f        B        b
+
+let x = abs 2 in x + y
+    B    f       b   f
+
+let x = x + 1 in x
+    B   f        b
+
+fun x -> let y = x + y in y
+    B        B   b   f    b
+
+let foo = fun x -> x + 1 in foo 7
+     B        B    b         b
+
+(fun x -> x + 1) 7
+     B    b
+
+let (+) a b = a * b in 10 + 10
+     B  B B   b   b       b
+
+let rec fib n = if n <= 1 then n else fib (n - 1) + fib (n - 2)
+         B  B      b           b       b   b         b   b

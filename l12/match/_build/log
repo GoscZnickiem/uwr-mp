@@ -1,0 +1,47 @@
+# dune build
+# OCAMLPARAM: unset
+# Shared cache: disabled
+# Shared cache location: /home/dante/.cache/dune/db
+# Workspace root: /home/dante/uwr/mp/l12/match
+# Auto-detected concurrency: 12
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; instrument_with = []
+#  }
+$ /home/dante/.opam/uwr/bin/ocamlc.opt -config > /tmp/dune_2dd2df_output
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamllex -q -o src/lexer.ml src/lexer.mll)
+$ (cd _build/.sandbox/9cfb06552edd22cdf57f0da98f844f78/default && /home/dante/.opam/uwr/bin/menhir src/parser.mly --base src/parser --infer-write-query src/parser__mock.ml.mock)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamldep.opt -modules -impl src/match.ml) > _build/default/src/.match.eobjs/dune__exe__Match.impl.d
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamldep.opt -modules -impl src/eval.ml) > _build/default/src/.match.eobjs/dune__exe__Eval.impl.d
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamldep.opt -modules -impl src/funStd.ml) > _build/default/src/.match.eobjs/dune__exe__FunStd.impl.d
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamldep.opt -modules -impl src/lexer.ml) > _build/default/src/.match.eobjs/dune__exe__Lexer.impl.d
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamldep.opt -modules -impl src/parser__mock.ml.mock) > _build/default/src/.match.eobjs/parser__mock.impl.d
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamldep.opt -modules -impl src/ast.ml) > _build/default/src/.match.eobjs/dune__exe__Ast.impl.d
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -bin-annot -I src/.match.eobjs/byte -no-alias-deps -opaque -o src/.match.eobjs/byte/dune__exe.cmo -c -impl src/.match.eobjs/dune__exe.ml-gen)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.match.eobjs/byte -no-alias-deps -opaque -open Dune__exe -o src/.match.eobjs/byte/dune__exe__Ast.cmo -c -impl src/ast.ml)
+$ (cd _build/.sandbox/88c6dafec4eba9a984c4c03ab5fe2983/default && /home/dante/.opam/uwr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.match.eobjs/byte -open Dune__exe -short-paths -i -impl src/parser__mock.ml.mock) > _build/.sandbox/88c6dafec4eba9a984c4c03ab5fe2983/default/src/parser__mock.mli.inferred
+$ (cd _build/.sandbox/eea99009a293dc2e36c7b9eec0db01ed/default && /home/dante/.opam/uwr/bin/menhir src/parser.mly --base src/parser --infer-read-reply src/parser__mock.mli.inferred)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamldep.opt -modules -intf src/parser.mli) > _build/default/src/.match.eobjs/dune__exe__Parser.intf.d
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamldep.opt -modules -impl src/parser.ml) > _build/default/src/.match.eobjs/dune__exe__Parser.impl.d
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamldep.opt -modules -intf src/match.mli) > _build/default/src/.match.eobjs/dune__exe__Match.intf.d
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.match.eobjs/byte -no-alias-deps -opaque -open Dune__exe -o src/.match.eobjs/byte/dune__exe__Parser.cmi -c -intf src/parser.mli)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -I src/.match.eobjs/byte -I src/.match.eobjs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o src/.match.eobjs/native/dune__exe.cmx -c -impl src/.match.eobjs/dune__exe.ml-gen)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.match.eobjs/byte -I src/.match.eobjs/native -intf-suffix .ml -no-alias-deps -opaque -open Dune__exe -o src/.match.eobjs/native/dune__exe__Ast.cmx -c -impl src/ast.ml)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.match.eobjs/byte -no-alias-deps -opaque -open Dune__exe -o src/.match.eobjs/byte/dune__exe__Match.cmi -c -intf src/match.mli)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.match.eobjs/byte -no-alias-deps -opaque -open Dune__exe -o src/.match.eobjs/byte/dune__exe__Eval.cmo -c -impl src/eval.ml)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.match.eobjs/byte -no-alias-deps -opaque -open Dune__exe -o src/.match.eobjs/byte/dune__exe__Lexer.cmo -c -impl src/lexer.ml)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.match.eobjs/byte -no-alias-deps -opaque -open Dune__exe -o src/.match.eobjs/byte/dune__exe__FunStd.cmo -c -impl src/funStd.ml)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.match.eobjs/byte -I src/.match.eobjs/native -intf-suffix .ml -no-alias-deps -opaque -open Dune__exe -o src/.match.eobjs/native/dune__exe__Lexer.cmx -c -impl src/lexer.ml)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.match.eobjs/byte -intf-suffix .ml -no-alias-deps -opaque -open Dune__exe -o src/.match.eobjs/byte/dune__exe__Match.cmo -c -impl src/match.ml)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.match.eobjs/byte -I src/.match.eobjs/native -intf-suffix .ml -no-alias-deps -opaque -open Dune__exe -o src/.match.eobjs/native/dune__exe__FunStd.cmx -c -impl src/funStd.ml)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.match.eobjs/byte -I src/.match.eobjs/native -intf-suffix .ml -no-alias-deps -opaque -open Dune__exe -o src/.match.eobjs/native/dune__exe__Eval.cmx -c -impl src/eval.ml)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.match.eobjs/byte -I src/.match.eobjs/native -intf-suffix .ml -no-alias-deps -opaque -open Dune__exe -o src/.match.eobjs/native/dune__exe__Match.cmx -c -impl src/match.ml)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.match.eobjs/byte -intf-suffix .ml -no-alias-deps -opaque -open Dune__exe -o src/.match.eobjs/byte/dune__exe__Parser.cmo -c -impl src/parser.ml)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o src/match.bc src/.match.eobjs/byte/dune__exe.cmo src/.match.eobjs/byte/dune__exe__Ast.cmo src/.match.eobjs/byte/dune__exe__Eval.cmo src/.match.eobjs/byte/dune__exe__Parser.cmo src/.match.eobjs/byte/dune__exe__Lexer.cmo src/.match.eobjs/byte/dune__exe__FunStd.cmo src/.match.eobjs/byte/dune__exe__Match.cmo)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.match.eobjs/byte -I src/.match.eobjs/native -intf-suffix .ml -no-alias-deps -opaque -open Dune__exe -o src/.match.eobjs/native/dune__exe__Parser.cmx -c -impl src/parser.ml)
+$ (cd _build/default && /home/dante/.opam/uwr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o src/match.exe src/.match.eobjs/native/dune__exe.cmx src/.match.eobjs/native/dune__exe__Ast.cmx src/.match.eobjs/native/dune__exe__Eval.cmx src/.match.eobjs/native/dune__exe__Parser.cmx src/.match.eobjs/native/dune__exe__Lexer.cmx src/.match.eobjs/native/dune__exe__FunStd.cmx src/.match.eobjs/native/dune__exe__Match.cmx)
