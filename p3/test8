@@ -10,6 +10,7 @@ begin
 	begin 
 		res := res + x / 3
 		return f(x - 1)
+		write 42
 	end
 	else return 0
 end
