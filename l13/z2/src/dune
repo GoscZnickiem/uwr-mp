@@ -1,0 +1,9 @@
+(menhir 
+  (modules parser)
+  (flags --explain --trace))
+(ocamllex lexer)
+
+(executable
+ (name match)
+ (modes byte exe)
+ (public_name match))

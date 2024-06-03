@@ -1,0 +1,169 @@
+
+** Conflict (reduce/reduce) in state 90.
+** Token involved: RPAREN
+** This state is reached from prog after reading:
+
+MATCH mixfix WITH option(BAR) CNAME LPAREN pattern_base
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+prog 
+mixfix EOF 
+expr 
+app 
+base COMMA base 
+MATCH mixfix WITH option(BAR) loption(separated_nonempty_list(BAR,clause)) END 
+                              separated_nonempty_list(BAR,clause) 
+                              clause 
+                              pattern ARR mixfix 
+                              pattern_app 
+                              CNAME pctbase 
+                                    LPAREN pbase_list RPAREN // lookahead token appears
+                                           (?)
+
+** In state 90, looking ahead at RPAREN, reducing production
+** pbase_list ->
+** is permitted because of the following sub-derivation:
+
+pattern_base pbase_list // lookahead token is inherited
+             . 
+
+** In state 90, looking ahead at RPAREN, reducing production
+** pbase_list -> pattern_base
+** is permitted because of the following sub-derivation:
+
+pattern_base . 
+
+** Conflict (shift/reduce) in state 87.
+** Token involved: RPAREN
+** This state is reached from prog after reading:
+
+MATCH mixfix WITH option(BAR) CNAME LPAREN
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+prog 
+mixfix EOF 
+expr 
+app 
+base COMMA base 
+MATCH mixfix WITH option(BAR) loption(separated_nonempty_list(BAR,clause)) END 
+                              separated_nonempty_list(BAR,clause) 
+                              clause 
+                              pattern ARR mixfix 
+                              pattern_app 
+                              CNAME pctbase 
+                                    (?)
+
+** In state 87, looking ahead at RPAREN, shifting is permitted
+** because of the following sub-derivation:
+
+pattern_base 
+LPAREN . RPAREN 
+
+** In state 87, looking ahead at RPAREN, reducing production
+** pbase_list ->
+** is permitted because of the following sub-derivation:
+
+LPAREN pbase_list RPAREN // lookahead token appears
+       . 
+
+** Conflict (reduce/reduce) in state 61.
+** Token involved: RPAREN
+** This state is reached from prog after reading:
+
+CNAME LPAREN base COMMA base
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+prog 
+mixfix EOF 
+expr 
+app 
+CNAME ctbase 
+      (?)
+
+** In state 61, looking ahead at RPAREN, reducing production
+** app -> base COMMA base
+** is permitted because of the following sub-derivation:
+
+base 
+LPAREN mixfix RPAREN // lookahead token appears
+       expr // lookahead token is inherited
+       app // lookahead token is inherited
+       base COMMA base . 
+
+** In state 61, looking ahead at RPAREN, reducing production
+** base_list -> base
+** is permitted because of the following sub-derivation:
+
+LPAREN base_list RPAREN // lookahead token appears
+       base COMMA base_list // lookahead token is inherited
+                  base . 
+
+** Conflict (reduce/reduce) in state 58.
+** Token involved: RPAREN
+** This state is reached from prog after reading:
+
+CNAME LPAREN base
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+prog 
+mixfix EOF 
+expr 
+app 
+CNAME ctbase 
+      (?)
+
+** In state 58, looking ahead at RPAREN, reducing production
+** app -> base
+** is permitted because of the following sub-derivation:
+
+base 
+LPAREN mixfix RPAREN // lookahead token appears
+       expr // lookahead token is inherited
+       app // lookahead token is inherited
+       base . 
+
+** In state 58, looking ahead at RPAREN, reducing production
+** base_list -> base
+** is permitted because of the following sub-derivation:
+
+LPAREN base_list RPAREN // lookahead token appears
+       base . 
+
+** Conflict (shift/reduce) in state 22.
+** Tokens involved: TRUE MATCH LPAREN INT IDENT FALSE
+** The following explanations concentrate on token TRUE.
+** This state is reached from prog after reading:
+
+CNAME
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+prog 
+mixfix EOF 
+expr 
+app 
+(?)
+
+** In state 22, looking ahead at TRUE, shifting is permitted
+** because of the following sub-derivation:
+
+CNAME ctbase 
+      base 
+      . TRUE 
+
+** In state 22, looking ahead at TRUE, reducing production
+** ctbase ->
+** is permitted because of the following sub-derivation:
+
+app base // lookahead token appears because base can begin with TRUE
+CNAME ctbase // lookahead token is inherited
+      . 
